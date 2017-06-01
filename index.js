@@ -19,4 +19,4 @@ app.use(session({
 require('./blog.js')(app,fs,path,settings);
 require('./login.js')(app,settings);
 require('./new.js')(app,fs,path,settings);
-app.listen(80);
+app.listen(process.env.port||80);
