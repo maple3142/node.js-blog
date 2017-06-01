@@ -1,0 +1,11 @@
+{
+    "blog": {
+        "title": "Blog",
+        "banner": "/resource/img/banner.jpg",
+        "articlesData": "./articles.json"
+    },
+    "account": {
+        "acc": "admin",
+        "pwd": "admin"
+    }
+}

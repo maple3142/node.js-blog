@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <%- include head.ejs %>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="/">
+                        <img src="<%= banner %>" alt="top_banner" height="300px" width="100%">
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <% for(aa of articles){ %>
+                        <div class="card">
+                            <div class="card-block">
+                                <h3 class="card-title"><a href="<%= aa.url %>"><%= aa.name %></a></h3>
+                                <% if(login){ %>
+                                    <a href="/del/<%= aa.name %>" class="card-link">delete</a>
+                                <% } %>
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <ul class="list-group list-group-flush">
+                            <% for(i of shortcuts){ %>
+                                <li class="list-group-item">
+                                    <a href="<%= i.href %>"><%= i.text %></a>
+                                </li>
+                            <% } %>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

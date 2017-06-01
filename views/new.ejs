@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <%- include head.ejs %>
+        <script src="resource/js/ckeditor/ckeditor.js"></script>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <form action="/new" method="POST">
+                <div class="form-group">
+                    <label for="title">Title:</label>
+                    <input type="text" name="title" id="title" class="form-control" id="title">
+                </div>
+                <div class="form-group">
+                    <textarea id="editor" name="html" class="form-control"></textarea>
+                </div>
+                <div class="controls">
+                    <input type="submit" class="btn btn-primary" name="create post">
+                </div>
+            </form>
+        </div>
+        <script>
+            CKEDITOR.replace('editor');
+            document.querySelector('form').addEventListener('submit',e=>{
+                if(!document.querySelector('#title').value){
+                    e.preventDefault();
+                    alert('Don\'t leave title empty');
+                }
+            });
+        </script>
+    </body>
+</html>
