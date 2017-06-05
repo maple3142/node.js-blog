@@ -18,14 +18,17 @@ function gs(req,settings){
         }
     return shortcuts;
 }
-module.exports=function(app,fs,path,settings){
+module.exports=function(app,fs,path,moment,settings){
     app.get('/',(req,res)=>{
         let shortcuts=gs(req,settings);
         fs.readFile(settings.blog.articlesData).then(data=>{
                 res.render('index',{
                     title: settings.blog.title,
                     banner: settings.blog.banner,
-                    articles: JSON.parse(data),
+                    articles: JSON.parse(data).sort((a,b)=>a.date<b.date).map(e=>{
+                        e.date=moment(e.date).format(settings.blog.dateFormat);
+                        return e;
+                    }),
                     shortcuts: shortcuts,
                     login: req.session.user===settings.account.acc
                 });

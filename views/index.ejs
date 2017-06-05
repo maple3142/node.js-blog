@@ -18,6 +18,7 @@
                         <div class="card">
                             <div class="card-block">
                                 <h3 class="card-title"><a href="<%= aa.url %>"><%= aa.name %></a></h3>
+                                <div class="card-subtitle"><%= aa.date %></div>
                                 <% if(login){ %>
                                     <a href="/del/<%= aa.name %>" class="card-link">delete</a>
                                 <% } %>
